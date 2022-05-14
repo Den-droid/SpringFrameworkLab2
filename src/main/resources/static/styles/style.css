@@ -1,0 +1,44 @@
+table, td, th {
+    border: 2px double grey;
+}
+
+td {
+    padding: 10px;
+}
+
+tr {
+    text-align: center;
+}
+
+.divCenter{
+    box-sizing: border-box;
+    width: 100%;
+    float: left;
+    align-content: center;
+    align-items: center;
+    /*text-align: center;*/
+}
+
+.divCenter label{
+    margin-bottom: 5px;
+}
+
+.innerDivCenter{
+    border: aqua solid 4px;
+    padding: 5px;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    color: blueviolet;
+}
+
+body{
+    padding: 10px;
+    background-color: #ffffd8;
+}

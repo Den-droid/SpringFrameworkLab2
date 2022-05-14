@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+<body>
+<div>
+    <a href="/">На головну</a>
+    <a href="/login">Увійти</a>
+    <a href="/admin">Admin page (test)</a>
+</div>
+<hr>
+<form method="get" action="/search">
+    <label>
+        <input type="text" name="film">
+    </label>
+    <label>
+        <input type="date" name="date" th:value="${todayDate}">
+    </label>
+    <label>
+        <input type="submit" value="Пошук">
+    </label>
+</form>
+<hr>
+<table th:if="${#lists.size(films) > 0}">
+    <tr>
+        <th>Film</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="film: ${films}">
+        <td>
+            <span th:text="${film.name}"/>
+        </td>
+        <td>
+            <a th:href="@{/films/schedule(id=${film.id})}">Look through</a>
+        </td>
+    </tr>
+</table>
+<div th:unless="${#lists.size(films) > 0}" class="alert alert-info" role="alert">
+    No movie sessions on
+    <span th:if="${filmName != null && !filmName.isEmpty()}"
+          th:text="${'film &quot;' + filmName + '&quot; on '}"></span>
+    <span th:text="${todayDate}"></span>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+</body>
+</html>
